@@ -17,6 +17,7 @@ class noteTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        
         // Styles
         shadowView.layer.shadowColor =  UIColor(red:0/255.0, green:0/255.0, blue:0/255.0, alpha: 1.0).cgColor
         shadowView.layer.shadowOffset = CGSize(width: 0.75, height: 0.75)
@@ -37,7 +38,6 @@ class noteTableViewCell: UITableViewCell {
         
         self.noteNameLabel.text = note.noteName?.uppercased()
         self.noteDescriptionLabel.text = note.noteDescription
-        
         self.noteImageView.image = UIImage(data: note.noteImage! as Data)
         
     }

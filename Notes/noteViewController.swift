@@ -149,7 +149,7 @@ class noteViewController: UIViewController, UITextFieldDelegate,  UINavigationCo
 
     // Save
     @IBAction func saveButtonWasPressed(_ sender: UIBarButtonItem) {
-        if noteNameLabel.text == "" || noteNameLabel.text == "NOTE NAME" || noteDescriptionLabel.text == "" || noteDescriptionLabel.text == "Note Description..." {
+        if noteNameLabel.text == "" || noteNameLabel.text == "Header" || noteDescriptionLabel.text == "" || noteDescriptionLabel.text == "Note" {
             
             let alertController = UIAlertController(title: "Missing Information", message:"You left one or more fields empty. Please make sure that all fields are filled before attempting to save.", preferredStyle: UIAlertController.Style.alert)
             let OKAction = UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.default, handler: nil)
@@ -168,8 +168,9 @@ class noteViewController: UIViewController, UITextFieldDelegate,  UINavigationCo
                 if let moc = managedObjectContext {
                     let note = Note(context: moc)
 
-                    if let data = self.noteImageView.image!.jpegData(compressionQuality: 1.0) {
+                    if let data = self.noteImageView.image!.pngData() {
                         note.noteImage = data as Data
+                        if self.noteImageView.image != UIImage.init(data: data){ print("hi")}
                     }
                 
                     note.noteName = noteName
@@ -205,7 +206,7 @@ class noteViewController: UIViewController, UITextFieldDelegate,  UINavigationCo
                 managedObject!.setValue(noteNameLabel.text, forKey: "noteName")
                 managedObject!.setValue(noteDescriptionLabel.text, forKey: "noteDescription")
                 
-                if let data = self.noteImageView.image!.jpegData(compressionQuality: 1.0) {
+                if let data = self.noteImageView.image!.pngData() {
                     managedObject!.setValue(data, forKey: "noteImage")
                 }
                 

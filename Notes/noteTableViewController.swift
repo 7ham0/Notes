@@ -21,6 +21,12 @@ class noteTableViewController: UITableViewController {
         super.viewDidLoad()
         retrieveNotes()
         
+        //Magic Button))
+//        let button = UIButton(frame: CGRect(origin: CGPoint(x: self.view.frame.width / 2 - 25, y: self.view.frame.size.height - 70), size: CGSize(width:50, height: 50)))
+//        button.backgroundColor = UIColor.black
+//        self.navigationController!.view.addSubview(button)
+        
+        
         // Styles
 //        self.tableView.backgroundColor = UIColor(red: 242.0/255.0, green: 242.0/255.0, blue: 242.0/255.0, alpha: 1.0)
         
